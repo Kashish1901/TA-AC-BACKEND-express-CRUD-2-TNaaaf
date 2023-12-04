@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        padding: 32px;
+        border: 1px solid black;
+        margin: 0 auto;
+        text-align: center;
+      }
+      input {
+        width: 90%;
+        padding: 20px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conatiner">
+      <h2>Add Article Details</h2>
+      <form action="/articles/<%= article.id %>" method="POST">
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter title "
+          value="<%= article.title %>"
+        />
+        <textarea
+          name="description"
+          rows="4"
+          placeholder="Enetr valid description"
+          value="<%= article.description %>"
+        ></textarea>
+        <input
+          type="text"
+          name="tags"
+          placeholder="Tags"
+          value="<%= article.tags %>"
+        />
+        <input
+          type="text"
+          name="author"
+          placeholder="Author Name"
+          value="<%= article.author %>"
+        />
+        <input
+          type="number"
+          name="likes"
+          placeholder="Likes"
+          value="<%= article.likes %>"
+        />
+        <input type="submit" value="Update Article" />
+      </form>
+    </div>
+  </body>
+</html>
