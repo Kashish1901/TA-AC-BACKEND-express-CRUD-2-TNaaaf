@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flex {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/articles">
+      <button>Home</button>
+    </a>
+    <h1><%= article.title %></h1>
+    <h2><%= article.author %></h2>
+    <% article.tags.forEach(tag => { %>
+    <span><%= tag %></span>
+    <% }) %>
+    <p><%= article.description %></p>
+    <h4><%= article.likes ? article.likes : 0 %></h4>
+
+    <div class="flex">
+      <a href="/articles/<%= article.id %>/likes">
+        <button>Likes</button>
+      </a>
+      <a href="/articles/<%= article.id %>/edit">
+        <button>Edit</button>
+      </a>
+      <a href="/articles/<%= article.id %>/delete">
+        <button>Delete</button>
+      </a>
+    </div>
+  </body>
+</html>
