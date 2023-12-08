@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form
+        action="/comments/<%= comment.id %>"
+        method="POST"
+        style="
+          display: flex;
+          flex-direction: column;
+          border: 1px solid black;
+          width: 350px;
+          padding: 10px;
+          margin: 0 auto;
+          margin-top: 50px;
+          background-color: lightcyan;
+        "
+      >
+        <h1 style="color: darkgray; text-decoration: underline">
+          Update Comment
+        </h1>
+        <textarea
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+          name="content"
+          placeholder="Add comment..."
+          rows="5"
+          column="6"
+        >
+<%= comment.content %></textarea
+        >
+        <input
+          type="number"
+          name="likes"
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+          value="<%= comment.likes %>"
+        />
+        <input
+          type="text"
+          name="author"
+          placeholder="add your name"
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+          value="<%= comment.author %>"
+        />
+        <input
+          type="submit"
+          value="Update Comment"
+          style="
+            width: 140px;
+            font-size: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            text-align: center;
+            background-color: green;
+            color: white;
+          "
+        />
+      </form>
+    </div>
+  </body>
+</html>

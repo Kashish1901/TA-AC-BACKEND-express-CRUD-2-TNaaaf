@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body
+    style="
+      a {
+        text-decoration: none;
+      }
+    "
+  >
+    <%- include('partials/header') -%>
+    <h1><%= article.title %></h1>
+    <h2><%= article.author %></h2>
+    <% article.tags.forEach(tag => { %>
+    <span><%= tag %></span>
+    <% }) %>
+    <p><%= article.description %></p>
+    <h4><%= article.likes ? article.likes : 0 %></h4>
+
+    <div class="flex">
+      <a href="/articles/<%= article.id %>/likes">
+        <button
+          style="
+            color: white;
+            background-color: blue;
+            border: 1px solid black;
+            padding: 12px;
+            text-align: right;
+            border-radius: 4px;
+          "
+        >
+          Likes
+        </button>
+      </a>
+      <a href="/articles/<%= article.id %>/dislikes">
+        <button
+          style="
+            color: white;
+            background-color: rgb(255, 0, 4);
+            border: 1px solid black;
+            padding: 12px;
+            text-align: right;
+            border-radius: 4px;
+          "
+        >
+          dislikes
+        </button>
+      </a>
+      <a href="/articles/<%= article.id %>/edit">
+        <button
+          style="
+            color: white;
+            background-color: green;
+            border: 1px solid black;
+            padding: 12px;
+            text-align: left;
+            border-radius: 4px;
+          "
+        >
+          Edit
+        </button>
+      </a>
+      <a href="/articles/<%= article.id %>/delete">
+        <button
+          style="
+            color: white;
+            background-color: blue;
+            border: 1px solid black;
+            padding: 12px;
+            text-align: right;
+            border-radius: 4px;
+          "
+        >
+          Delete
+        </button>
+      </a>
+    </div>
+    <div>
+      <form
+        action="/articles/<%= article.id %>/comments"
+        method="POST"
+        style="
+          display: flex;
+          flex-direction: column;
+          border: 1px solid black;
+          width: 350px;
+          padding: 10px;
+          margin-top: 10px;
+          background-color: lightcyan;
+        "
+      >
+        <h1 style="color: darkgray; text-decoration: underline">Add Comment</h1>
+        <textarea
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+          name="content"
+          placeholder="Add comment..."
+          rows="5"
+          column="6"
+        ></textarea>
+        <input
+          type="number"
+          name="likes"
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+        />
+        <input
+          type="text"
+          name="author"
+          placeholder="add your name"
+          style="width: 300px; font-size: 20px; margin: 10px 0; padding: 10px"
+        />
+        <input
+          type="submit"
+          value="Add Comment"
+          style="
+            width: 140px;
+            font-size: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            text-align: center;
+            background-color: green;
+            color: white;
+          "
+        />
+      </form>
+    </div>
+    <% comments.forEach(comment => { %>
+    <h2><%= comment.content %></h2>
+    <h3><%= comment.likes %></h3>
+    <h4><%= comment.author %></h4>
+    <a href="/comments/<%= comment.id %>/edit">
+      <button
+        style="
+          color: white;
+          background-color: green;
+          border: 1px solid black;
+          padding: 12px;
+          text-align: left;
+          border-radius: 4px;
+        "
+      >
+        Edit
+      </button>
+    </a>
+    <a href="/comments/<%= comment.id %>/delete">
+      <button
+        style="
+          color: white;
+          background-color: blue;
+          border: 1px solid black;
+          padding: 12px;
+          text-align: right;
+          border-radius: 4px;
+        "
+      >
+        Delete
+      </button>
+    </a>
+    <% }) %>
+  </body>
+</html>
